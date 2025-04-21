@@ -1,0 +1,104 @@
+import java.util.*;
+class Main
+  {
+    Scanner sc=new Scanner(System.in);
+    // balance and pin are the instance variables
+    int balance=10000;
+    int apin=1234;
+    
+    public static void main(String args[])
+    {
+      // creating object of Main class
+      Main a=new Main();
+      if(a.checkpin())
+      {
+        a.showmenu();
+      }
+      else
+      {
+        System.out.println("Card blocked");
+      }
+    }
+    // methods to check balance
+    public void checkbalance()
+    {
+      System.out.println("Balance is:"+balance);
+    }
+    //  methods to withdraw money
+   public void withdraw()
+    {
+      System.out.println("Enter amount to withdraw");
+      int amount=sc.nextInt();
+      if(amount>balance)
+      {
+        System.out.println("Insufficient balance");
+      }
+      else
+      {
+        balance=balance-amount;
+        System.out.println("Withdraw successful");
+      }
+      System.out.println("Balance is:"+balance);
+      
+    }
+      // methods to deposit money
+    public void deposit()
+    {
+      System.out.println("Enter amount to deposit");
+      int amount=sc.nextInt();
+      balance=balance+amount;
+      System.out.println("Deposit successful");
+      System.out.println("Balance is:"+balance);
+    }
+    // to check weather the pin entered is correct or not
+     boolean checkpin()
+    {
+      int att=3;
+      while(att>0)
+        {
+          System.out.println("Enter pin");
+          int pin=sc.nextInt();
+          if(pin==apin)
+            {
+              System.out.println("Correct pin");
+              return true;
+            }
+          else
+          {
+            att--;
+            System.out.println("Wrong pin Attempts left:"+att);
+            
+          }
+        }
+      return false;
+    }
+   public void  showmenu()
+    {
+      int ch;
+      do
+        {
+          System.out.println("1. Check Balance");
+          System.out.println("2. Withdraw");
+          System.out.println("3. Deposit");
+          System.out.println("4. Exit");
+          System.out.println("Enter your choice");
+          ch=sc.nextInt();
+          switch(ch)
+            {
+                case 1:checkbalance();
+                        break;
+                case 2:withdraw();
+                        break;
+                case 3:deposit();
+                        break;
+                case 4:System.out.println("Thank you");
+                        break;
+                        
+                default:
+                        System.out.println("Invalid choice");
+            }
+          
+        }
+        while(ch!=4);
+    }
+  }
