@@ -1,0 +1,64 @@
+import java.util.*;
+class Main{
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    String st[]={"apple", "bread", "chair", "dream", "eagle", "flame", "grape", "house", "input", "joker",
+                "kneel", "lemon", "money", "night", "ocean", "plant", "queen", "river", "stone", "table",
+                "under", "vapor", "wheat", "xenon", "yacht", "zebra", "angel", "bride", "candy", "dance",
+                "event", "frost", "glide", "honey", "ideal", "jolly", "karma", "liver", "magic", "noble",
+                "orbit", "piano", "quilt", "racer", "spice", "train", "unity", "vivid", "worry", "xylem",
+                "yield", "zesty", "amend", "blush", "crisp", "daisy", "elbow", "fuzzy", "gleam", "hatch",
+                "index", "joint", "knees", "label", "mirth", "nerdy", "oxide", "penny", "quirk", "robin",
+                "scale", "trick", "urban", "vouch", "whale", "xenon", "young", "zonal", "agree", "bloom",
+                "charm", "drape", "eager", "feast", "gloom", "haste", "inbox", "jumps", "knife", "latch",
+                "march", "novel", "ounce", "proxy", "quiet", "rumor", "shine", "tiger", "ultra", "vague"};
+    int k=((int)(Math.random()*100))-1;
+    String word=st[k];
+    System.out.println("Guess the word: "+word);
+    System.out.println("WORDLE");
+    System.out.println("Guess the 5 letter word");
+    for(int i=1;i<=5;i++)
+      {
+        System.out.println("Enter your guess");
+        System.out.println("Guess "+(i));
+        String g=sc.nextLine();
+        if(g.equals(word))
+        {
+          System.out.println("You guessed the word correctly");
+          break;
+        }
+        else
+        {
+          if(i==5)
+          {
+            System.out.println("You have used all your chances");
+            System.out.println("The word was "+word);
+            break;
+          }
+          else{
+            for(int j=0;j<5;j++)
+              {
+                char ch=word.charAt(j);
+                for(int l=0;l<5;l++)
+                  {
+                    char ch1=g.charAt(l);
+                    if(ch==ch1)
+                      {
+                        if(j==l){
+                          System.out.println(ch1+" is in the word and in correct position");
+                          break;
+                        }
+
+                        else
+                        {
+                          System.out.println(ch1+" is in the word but in wrong position");
+                          break;
+                        }
+                      }
+                  }
+              }
+            }
+          }  
+        }
+      }
+  }
